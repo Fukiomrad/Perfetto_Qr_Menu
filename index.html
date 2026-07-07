@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Perfetto'st Menü</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #faf7f2;
+      color: #1a1a1a;
+      min-height: 100vh;
+    }
+
+    .top-bar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 140px;
+      background: #1a1a1a;
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,.15);
+    }
+
+    .top-bar .back-btn {
+      background: none; border: none; color: #F6A52D;
+      font-size: 22px; cursor: pointer; padding: 4px;
+      display: none; width: 32px; height: 32px;
+      align-items: center; justify-content: center;
+    }
+    .top-bar .back-btn.show { display: flex; }
+
+    .hamburger {
+      background: none; border: none; cursor: pointer;
+      width: 32px; height: 32px;
+      display: flex; flex-direction: column; justify-content: center; gap: 5px;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block; height: 2.5px; background: #fff;
+      border-radius: 2px; transition: .3s;
+    }
+
+    .top-bar .logo-wrap {
+      flex: 1; display: flex; align-items: center; justify-content: center;
+    }
+    .top-bar .logo-wrap #logoImg {
+      display: block; height: 200px; width: 200px;
+    }
+    .top-bar .logo-wrap h1 {
+      font-size: 18px; font-weight: 700; letter-spacing: 1px;
+      color: #F6A52D; display: none;
+    }
+    .top-bar .logo-wrap h1.show { display: block; }
+    .top-bar .logo-wrap img.hide { display: none; }
+
+    .overlay {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,.5);
+      z-index: 199;
+    }
+    .overlay.open { display: block; }
+
+    .side-nav {
+      position: fixed; top: 0; left: -280px;
+      width: 280px; height: 100%;
+      background: #1a1a1a; color: #fff;
+      z-index: 200;
+      transition: left .3s ease;
+      padding: 24px 20px;
+      overflow-y: auto;
+    }
+    .side-nav.open { left: 0; }
+
+    .side-nav .brand {
+      margin-bottom: 32px; padding-bottom: 16px;
+      border-bottom: 1px solid #F6A52D;
+    }
+
+    .side-nav a {
+      display: block;
+      color: #ccc; text-decoration: none;
+      font-size: 16px; padding: 12px 0;
+      border-bottom: 1px solid #2a2a2a;
+      transition: color .2s;
+    }
+    .side-nav a:hover { color: #F6A52D; }
+
+    .close-btn {
+      background: none; border: none; color: #fff;
+      font-size: 28px; cursor: pointer;
+      position: absolute; top: 12px; right: 16px;
+    }
+
+    .view {
+      display: none;
+      animation: fadeIn .25s ease;
+    }
+    .view.active { display: block; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── HOME VIEW ── */
+    .hero {
+      margin-top: 140px;
+      background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+      color: #fff;
+      text-align: center;
+      padding: 32px 20px 24px;
+    }
+    .hero p { font-size: 13px; color: #F6A52D; }
+
+    .container {
+      max-width: 560px; margin: 0 auto; padding: 16px 12px 80px;
+    }
+
+    .section-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+    }
+
+    .section-card {
+      aspect-ratio: 3 / 4;
+      border-radius: 16px;
+      overflow: hidden;
+      cursor: pointer;
+      box-shadow: 0 3px 14px rgba(0,0,0,.08);
+      transition: transform .15s, box-shadow .2s;
+      background-size: cover; background-position: center;
+      display: flex; align-items: flex-end;
+      position: relative;
+    }
+    .section-card .label {
+      width: 100%;
+      background: linear-gradient(transparent, rgba(0,0,0,.7));
+      padding: 40px 14px 16px;
+      color: #F6A52D;
+      font-size: 15px; font-weight: 700;
+      text-shadow: 0 1px 3px rgba(0,0,0,.5);
+      letter-spacing: .5px;
+    }
+    .section-card:active {
+      transform: scale(.96);
+      box-shadow: 0 1px 6px rgba(0,0,0,.12);
+    }
+
+    /* ── DETAIL VIEW ── */
+    .detail-header {
+      margin-top: 140px;
+      background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+      color: #fff;
+      text-align: center;
+      padding: 28px 20px 24px;
+    }
+    .detail-header h2 { font-size: 24px; font-weight: 700; color: #F6A52D; }
+
+    .item-grid {
+      max-width: 600px; margin: 0 auto; padding: 20px 16px 80px;
+      display: grid; grid-template-columns: 1fr; gap: 18px;
+    }
+
+    .item-card {
+      aspect-ratio: 3 / 4;
+      border-radius: 14px;
+      overflow: hidden;
+      cursor: pointer;
+      box-shadow: 0 2px 12px rgba(0,0,0,.08);
+      transition: transform .15s;
+      background-size: cover; background-position: center;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      position: relative;
+    }
+    .item-card:active {
+      transform: scale(.97);
+    }
+
+    .item-card .item-info {
+      background: linear-gradient(transparent, rgba(0,0,0,.8));
+      padding: 40px 16px 16px;
+      color: #fff;
+    }
+    .item-card .item-info .name {
+      font-size: 16px; font-weight: 600; margin-bottom: 3px;
+    }
+    .item-card .item-info .desc {
+      font-size: 12px; color: #ddd; line-height: 1.4; margin-bottom: 6px;
+    }
+    .item-card .item-info .price {
+      color: #F6A52D; font-weight: 700; font-size: 15px;
+    }
+
+    @media (min-width: 480px) {
+      .item-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (min-width: 600px) {
+      .container { padding: 24px 20px 80px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <button class="back-btn" id="backBtn">&larr;</button>
+    <button class="hamburger" id="menuBtn" aria-label="Menüyü aç">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="logo-wrap">
+      <img id="logoImg" src="Perfettost_Logo.png" alt="Perfetto'st" />
+      <h1 id="topTitle"></h1>
+    </div>
+    <div style="width:32px"></div>
+  </div>
+
+  <div class="overlay" id="overlay"></div>
+
+  <nav class="side-nav" id="sideNav">
+    <button class="close-btn" id="closeBtn">&times;</button>
+    <div class="brand"><img src="Perfettost_Logo.png" style="height:100px; width:32px; display:block; filter:brightness(0) invert(1);" alt="Perfetto'st" /></div>
+    <a href="#" data-section="avantajli">Avantajlı Menüler</a>
+    <a href="#" data-section="tostlar">Tostlar</a>
+    <a href="#" data-section="burgerler">Burgerler</a>
+    <a href="#" data-section="yanurunler">Yan Ürünler</a>
+    <a href="#" data-section="icecekler">İçecekler</a>
+    <a href="#" data-section="tatlilar">Tatlılar</a>
+  </nav>
+
+  <!-- HOME VIEW -->
+  <div class="view active" id="homeView">
+    <section class="hero">
+      <p>Her lokmada mükemmel lezzet</p>
+    </section>
+    <div class="container"><div class="section-grid" id="menuContainer"></div></div>
+  </div>
+
+  <!-- DETAIL VIEW -->
+  <div class="view" id="detailView">
+    <div class="detail-header">
+      <h2 id="detailTitle"></h2>
+    </div>
+    <div class="item-grid" id="itemGrid"></div>
+  </div>
+
+  <script>
+    const COLORS = ['#e74c3c','#e67e22','#f1c40f','#2ecc71','#1abc9c','#3498db','#9b59b6','#e84393','#d35400','#27ae60','#2980b9','#8e44ad'];
+
+    let menuData = [];
+    let currentSection = null;
+
+    function showView(viewId) {
+      document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+      document.getElementById(viewId).classList.add('active');
+    }
+
+    function showDetail(sectionId) {
+      currentSection = sectionId;
+      const section = menuData.find(s => s.id === sectionId);
+      if (!section) return;
+
+      document.getElementById('detailTitle').textContent = section.title;
+      document.getElementById('topTitle').textContent = section.title;
+
+      const grid = document.getElementById('itemGrid');
+      grid.innerHTML = '';
+
+      section.items.forEach((item, i) => {
+        const card = document.createElement('div');
+        card.className = 'item-card';
+
+        let bgStyle;
+        if (item.image) {
+          bgStyle = `background-image:linear-gradient(rgba(0,0,0,.2), rgba(0,0,0,.2)), url(${item.image});`;
+        } else {
+          const color = COLORS[i % COLORS.length];
+          const initial = item.name.charAt(0).toUpperCase();
+          bgStyle = `background-color:${color}; background-image:linear-gradient(135deg, ${color}88, ${color}cc), url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%22120%22 font-weight=%22bold%22 fill=%22rgba(255,255,255,0.3)%22%3E${initial}%3C/text%3E%3C/svg%3E'); background-blend-mode:overlay;`;
+        }
+
+        card.style.cssText = bgStyle + ' background-size:cover; background-position:center;';
+        card.innerHTML = `
+          <div class="item-info">
+            <div class="name">${item.name}</div>
+            <div class="desc">${item.desc}</div>
+            <div class="price">${item.price}</div>
+          </div>
+        `;
+
+        grid.appendChild(card);
+      });
+
+      document.getElementById('backBtn').classList.add('show');
+      document.getElementById('logoImg').classList.add('hide');
+      document.getElementById('topTitle').classList.add('show');
+      showView('detailView');
+      window.scrollTo(0, 0);
+      history.pushState({ view: 'detail', section: sectionId }, '');
+    }
+
+    function showHome() {
+      currentSection = null;
+      document.getElementById('topTitle').classList.remove('show');
+      document.getElementById('logoImg').classList.remove('hide');
+      document.getElementById('backBtn').classList.remove('show');
+      showView('homeView');
+      window.scrollTo(0, 0);
+    }
+
+    window.addEventListener('popstate', function(e) {
+      if (!e.state || e.state.view !== 'detail') {
+        showHome();
+      }
+    });
+
+    function renderHome() {
+      const homeContainer = document.getElementById('menuContainer');
+      homeContainer.innerHTML = '';
+      menuData.forEach(section => {
+        const card = document.createElement('div');
+        card.className = 'section-card';
+        card.dataset.section = section.id;
+        card.style.background = section.image
+          ? `linear-gradient(rgba(0,0,0,.3), rgba(0,0,0,.3)), url(${section.image}) center/cover`
+          : `linear-gradient(135deg, ${section.bg}, #1a1a1a)`;
+        card.innerHTML = `<div class="label">${section.title}</div>`;
+        card.addEventListener('click', () => showDetail(section.id));
+        homeContainer.appendChild(card);
+      });
+    }
+
+    const fallbackData = [
+      {"id":"avantajli","title":"Avantajlı Menüler","bg":"#e67e22","image":"Main_Menu_Images/avantajli.jpg","items":[{"name":"Tost + Patates Kızartması","desc":"Yanında içecek hediyemiz, çıtır patatesler ve özel sos ile servis edilir.","price":"120₺","image":"Menu_Resimleri/Menuler/tost-patates.jpg"},{"name":"Burger + Patates Kızartması","desc":"Yanında içecek hediyemiz, 100% dana köfte, cheddar ve özel burger sosu.","price":"150₺","image":"Menu_Resimleri/Menuler/burger-patates.jpg"},{"name":"Tost + Burger + Patates","desc":"İkili dev menü, hem tost hem burger tek tabakta!","price":"200₺","image":"Menu_Resimleri/Menuler/tost-burger-patates.jpg"},{"name":"Öğle Menüsü","desc":"Tost + Patates + İçecek, 12:00-15:00.","price":"110₺","image":"Menu_Resimleri/Menuler/ogle-menu.jpg"}]},
+      {"id":"tostlar","title":"Tostlar","bg":"#c0392b","image":"Main_Menu_Images/tostlar.jpg","items":[{"name":"Sucuklu Tost","desc":"Bol sucuklu, özel ekmeğimizde. Dilerseniz kaşar ilavesi.","price":"60₺","image":"Menu_Resimleri/Tostlar/sucuklu-tost.jpg"},{"name":"Kaşarlı Tost","desc":"Çift kaşar, tereyağında kızartılmış çıtır ekmek arasında.","price":"55₺","image":"Menu_Resimleri/Tostlar/kasarlı-tost.jpg"},{"name":"Karışık Tost","desc":"Sucuk, kaşar, domates ve biberin uyumu.","price":"70₺","image":"Menu_Resimleri/Tostlar/karisik-tost.jpg"},{"name":"Peynirli Tost","desc":"Beyaz peynir ve kaşar karışımı, taze otlar.","price":"60₺","image":"Menu_Resimleri/Tostlar/peynirli-tost.jpg"},{"name":"Kavurmalı Tost","desc":"Özel baharatlı kavurma, kaşar peyniri.","price":"75₺","image":"Menu_Resimleri/Tostlar/kavurmali-tost.jpg"},{"name":"Tavuklu Tost","desc":"Izgara tavuk, marul, domates, özel sos.","price":"70₺","image":"Menu_Resimleri/Tostlar/tavuklu-tost.jpg"}]},
+      {"id":"burgerler","title":"Burgerler","bg":"#8e44ad","image":"Main_Menu_Images/burgerler.jpg","items":[{"name":"Perfettost Burger","desc":"%100 dana köfte, cheddar, marul, domates, özel sos.","price":"110₺","image":"Menu_Resimleri/Burgerler/perfettost-burger.jpg"},{"name":"Double Perfettost","desc":"Çift dana köfte, çift cheddar, özel sos.","price":"150₺","image":"Menu_Resimleri/Burgerler/double-burger.jpg"},{"name":"Tavuk Burger","desc":"Izgara tavuk, marul, domates, ranch sos.","price":"90₺","image":"Menu_Resimleri/Burgerler/tavuk-burger.jpg"},{"name":"Spicy Burger","desc":"Acılı köfte, jalapeño, pepperjack peyniri.","price":"120₺","image":"Menu_Resimleri/Burgerler/spicy-burger.jpg"},{"name":"Veggie Burger","desc":"Sebze köftesi, avokado, roka, yoğurtlu sos.","price":"95₺","image":"Menu_Resimleri/Burgerler/veggie-burger.jpg"}]},
+      {"id":"yanurunler","title":"Yan Ürünler","bg":"#27ae60","image":"Main_Menu_Images/yanurunler.jpg","items":[{"name":"Patates Kızartması","desc":"Çıtır altın sarısı patates, ketçap ve mayonez ile.","price":"35₺","image":"Menu_Resimleri/Yan_Urunler/patates.jpg"},{"name":"Soğan Halkası","desc":"Çıtır kaplamalı soğan halkaları, ranch sos ile.","price":"40₺","image":"Menu_Resimleri/Yan_Urunler/sogan-halkasi.jpg"},{"name":"Peynir Çubukları","desc":"Kızarmış mozzarella çubukları, marinara sos ile.","price":"45₺","image":"Menu_Resimleri/Yan_Urunler/peynir-cubuk.jpg"},{"name":"Tavuk Kanadı","desc":"Baharatlı tavuk kanatları, barbekü sos ile (6 adet).","price":"55₺","image":"Menu_Resimleri/Yan_Urunler/tavuk-kanadi.jpg"},{"name":"Mozzarella Salatası","desc":"Taze mozzarella, cherry domates, fesleğen, balsamik sos.","price":"50₺","image":"Menu_Resimleri/Yan_Urunler/mozzarella-salata.jpg"}]},
+      {"id":"icecekler","title":"İçecekler","bg":"#2980b9","image":"Main_Menu_Images/icecekler.jpg","items":[{"name":"Kola","desc":"330ml cam şişe.","price":"25₺","image":"Menu_Resimleri/Icecekler/kola.jpg"},{"name":"Fanta","desc":"Portakal aromalı, 330ml.","price":"25₺","image":"Menu_Resimleri/Icecekler/fanta.jpg"},{"name":"Sprite","desc":"Limon aromalı, 330ml.","price":"25₺","image":"Menu_Resimleri/Icecekler/sprite.jpg"},{"name":"Ayran","desc":"Taze, hafif tuzlu. 300ml.","price":"20₺","image":"Menu_Resimleri/Icecekler/ayran.jpg"},{"name":"Şalgam","desc":"Geleneksel Adana şalgamı. 330ml.","price":"25₺","image":"Menu_Resimleri/Icecekler/salgam.jpg"},{"name":"Su","desc":"0.5L doğal kaynak suyu.","price":"10₺","image":"Menu_Resimleri/Icecekler/su.jpg"},{"name":"Çay","desc":"Taze demlenmiş.","price":"15₺","image":"Menu_Resimleri/Icecekler/cay.jpg"},{"name":"Kahve","desc":"Filtre / Türk kahvesi.","price":"30₺","image":"Menu_Resimleri/Icecekler/kahve.jpg"}]},
+      {"id":"tatlilar","title":"Tatlılar","bg":"#e84393","image":"Main_Menu_Images/tatlilar.jpg","items":[{"name":"Sütlaç","desc":"Fırın sütlaç, tarçınlı.","price":"50₺","image":"Menu_Resimleri/Tatlilar/sutlac.jpg"},{"name":"Kadayıf","desc":"Fıstıklı veya cevizli, şerbetli.","price":"60₺","image":"Menu_Resimleri/Tatlilar/kadayif.jpg"},{"name":"Künefe","desc":"Antep fıstığı ile süslenmiş.","price":"70₺","image":"Menu_Resimleri/Tatlilar/kunefer.jpg"},{"name":"Dondurma","desc":"3 çeşit (çikolata, vanilya, çilek).","price":"40₺","image":"Menu_Resimleri/Tatlilar/dondurma.jpg"},{"name":"Baklava","desc":"Ev yapımı, cevizli veya fıstıklı.","price":"65₺","image":"Menu_Resimleri/Tatlilar/baklava.jpg"}]}
+    ];
+
+    fetch('menu.json')
+      .then(r => { if (!r.ok) throw Error(); return r.json(); })
+      .then(data => { menuData = data; renderHome(); })
+      .catch(() => { menuData = fallbackData; renderHome(); });
+
+    document.getElementById('backBtn').addEventListener('click', showHome);
+
+    document.getElementById('logoImg').onload = function() {
+      this.style.setProperty('height', '200px', 'important');
+      this.style.setProperty('width', '200px', 'important');
+    };
+    document.getElementById('logoImg').style.setProperty('height', '200px', 'important');
+    document.getElementById('logoImg').style.setProperty('width', '200px', 'important');
+
+    const menuBtn = document.getElementById('menuBtn');
+    const closeBtn = document.getElementById('closeBtn');
+    const overlay = document.getElementById('overlay');
+    const sideNav = document.getElementById('sideNav');
+
+    function openMenu() { sideNav.classList.add('open'); overlay.classList.add('open'); }
+    function closeMenu() { sideNav.classList.remove('open'); overlay.classList.remove('open'); }
+
+    menuBtn.addEventListener('click', openMenu);
+    closeBtn.addEventListener('click', closeMenu);
+    overlay.addEventListener('click', closeMenu);
+
+    document.querySelectorAll('.side-nav a').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        closeMenu();
+        const id = link.dataset.section;
+        if (currentSection === id) return;
+        showDetail(id);
+      });
+    });
+  </script>
+</body>
+</html>
