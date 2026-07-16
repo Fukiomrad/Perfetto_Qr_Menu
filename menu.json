@@ -5,10 +5,10 @@
     "bg": "#e67e22",
     "image": "Main_Menu_Images/avantajli.jpg",
     "items": [
-      { "name": "Cheese Burger Menu", "desc": "100 gr dana köfte, çift cheddar peyniri, marul, domates, karamelize soğan, turşu ve özel perfetto sos ile hazırlanır. Patates kızartması ile servis edilir. Seçeceğiniz içecek ile.", "price": "480₺", "image": "Menu_Resimleri/Menuler/Cheese_Burger_Menu.jpg" },
-      { "name": "Classic Burger Menü", "desc": "100 gr dana köfte, marul, domates, karamelize soğan ve özel perfetto sos ile hazırlanır. Patates kızartması ile servis edilir. Seçeceğiniz içecek ile.", "price": "460₺", "image": "Menu_Resimleri/Menuler/Classic_Burger_Menu.jpg" },
-      { "name": "Mushroom Burger Menü", "desc": "100 gr dana köfte, cheddar peyniri, sotelenmiş mantar karışımı, karamelize soğan ve özel perfetto sos ile hazırlanır. Patates kızartması ile servis edilir. Seçeceğiniz içecek ile.", "price": "480₺", "image": "Menu_Resimleri/Menuler/Mushroom_Burger_Menu.jpg" },
-      { "name": "Dana Füme Etli Burger Menü", "desc": "100 gr dana köfte, cheddar peyniri, dana füme et, karamelize soğan, marul ve özel perfetto sos ile hazırlanır. Patates kızartması ile servis edilir. Seçeceğiniz içecek ile.", "price": "550₺", "image": "Menu_Resimleri/Menuler/Dana_Fume_Etli_Burger_Menu.jpg" },
+      { "name": "Cheese Burger Menu", "desc": "100 gr dana köfte, çift cheddar peyniri, marul, domates, karamelize soğan, turşu ve özel perfetto sos ile hazırlanır. Patates kızartması ile servis edilir. Seçeceğiniz içecek ile. \n Gramaj Seçenekleri:\n (130gr +80₺) (150gr +120₺)", "price": "480₺", "image": "Menu_Resimleri/Menuler/Cheese_Burger_Menu.jpg" },
+      { "name": "Classic Burger Menü", "desc": "100 gr dana köfte, marul, domates, karamelize soğan ve özel perfetto sos ile hazırlanır. Patates kızartması ile servis edilir. Seçeceğiniz içecek ile.\n Gramaj Seçenekleri:\n (130gr +80₺) (150gr +120₺)", "price": "480₺", "price": "460₺", "image": "Menu_Resimleri/Menuler/Classic_Burger_Menu.jpg" },
+      { "name": "Mushroom Burger Menü", "desc": "100 gr dana köfte, cheddar peyniri, sotelenmiş mantar karışımı, karamelize soğan ve özel perfetto sos ile hazırlanır. Patates kızartması ile servis edilir. Seçeceğiniz içecek ile.\n Gramaj Seçenekleri:\n (130gr +80₺) (150gr +120₺)", "price": "480₺", "price": "480₺", "image": "Menu_Resimleri/Menuler/Mushroom_Burger_Menu.jpg" },
+      { "name": "Dana Füme Etli Burger Menü", "desc": "100 gr dana köfte, cheddar peyniri, dana füme et, karamelize soğan, marul ve özel perfetto sos ile hazırlanır. Patates kızartması ile servis edilir. Seçeceğiniz içecek ile\n Gramaj Seçenekleri:\n (130gr +80₺) (150gr +120₺)", "price": "480₺.", "price": "550₺", "image": "Menu_Resimleri/Menuler/Dana_Fume_Etli_Burger_Menu.jpg" },
       { "name": "Karışık Tost Menü", "desc": "Kaşar Peyniri, Sucuk,Mayonez Yanında Patates Kızartması ve Seçeceğiniz içecek ile.", "price": "360₺", "image": "Menu_Resimleri/Menuler/Sucuklu_Karisik_Menu.jpg" },
       { "name": "Akdeniz Tost Menü", "desc": "Zeytin Ezmesi, Dil Peyniri, Beyaz Peynir, Kaşar Peyniri, Domates, Roka, , Yanında Patates Kızartması Seçeceğiniz içecek ile.", "price": "350₺", "image": "Menu_Resimleri/Menuler/Akdeniz_Tost_Menu.jpg" },
       { "name": "Kavurma Karışık Menü", "desc": "Kaşar peyniri, sucuk, kavurma, mayonez. Patates kızartması ve Seçeceğiniz içecek ile.", "price": "450₺", "image": "Menu_Resimleri/Menuler/Kavurmali_Karisik_Menu.jpg" }
@@ -40,10 +40,10 @@
     "bg": "#8e44ad",
     "image": "Main_Menu_Images/burgerler.jpg",
     "items": [
-      { "name": "Cheese Burger", "desc": "100 gr dana köfte, çift cheddar peyniri, marul, domates, karamelize soğan, turşu ve özel perfetto sos ile hazırlanır. Patates kızartması ile servis edilir.", "price": "430₺", "image": "Menu_Resimleri/Burgerler/Cheese_Burger.jpg" },
-      { "name": "Classic_Burger", "desc": "100 gr dana köfte, marul, domates, karamelize soğan ve özel perfetto sos ile hazırlanır. Patates kızartması ile servis edilir.", "price": "410₺", "image": "Menu_Resimleri/Burgerler/Classic_Burger.jpg" },
-      { "name": "Dana Fume_Etli Burger", "desc": "100 gr dana köfte, cheddar peyniri, dana füme et, karamelize soğan, marul ve özel perfetto sos ile hazırlanır. Patates kızartması ile servis edilir.", "price": "500₺", "image": "Menu_Resimleri/Burgerler/Dana_Fume_Etli_Burger.jpg" },
-      { "name": "Mushroom Burger", "desc": "100 gr dana köfte, cheddar peyniri, sotelenmiş mantar karışımı, karamelize soğan ve özel perfetto sos ile hazırlanır. Patates kızartması ile servis edilir. ", "price": "430₺", "image": "Menu_Resimleri/Burgerler/Mushroom_Burger.jpg" }
+      { "name": "Cheese Burger", "desc": "100 gr dana köfte, çift cheddar peyniri, marul, domates, karamelize soğan, turşu ve özel perfetto sos ile hazırlanır. Patates kızartması ile servis edilir.\n Gramaj Seçenekleri:\n (130gr +80₺) (150gr +120₺)", "price": "480₺", "price": "430₺", "image": "Menu_Resimleri/Burgerler/Cheese_Burger.jpg" },
+      { "name": "Classic_Burger", "desc": "100 gr dana köfte, marul, domates, karamelize soğan ve özel perfetto sos ile hazırlanır. Patates kızartması ile servis edilir.\n Gramaj Seçenekleri:\n (130gr +80₺) (150gr +120₺)", "price": "480₺", "price": "410₺", "image": "Menu_Resimleri/Burgerler/Classic_Burger.jpg" },
+      { "name": "Dana Fume_Etli Burger", "desc": "100 gr dana köfte, cheddar peyniri, dana füme et, karamelize soğan, marul ve özel perfetto sos ile hazırlanır. Patates kızartması ile servis edilir.\n Gramaj Seçenekleri:\n (130gr +80₺) (150gr +120₺)", "price": "480₺", "price": "500₺", "image": "Menu_Resimleri/Burgerler/Dana_Fume_Etli_Burger.jpg" },
+      { "name": "Mushroom Burger", "desc": "100 gr dana köfte, cheddar peyniri, sotelenmiş mantar karışımı, karamelize soğan ve özel perfetto sos ile hazırlanır. Patates kızartması ile servis edilir.\n Gramaj Seçenekleri:\n (130gr +80₺) (150gr +120₺)", "price": "480₺ ", "price": "430₺", "image": "Menu_Resimleri/Burgerler/Mushroom_Burger.jpg" }
     ]
   },
   {
@@ -52,9 +52,9 @@
     "bg": "#27ae60",
     "image": "Main_Menu_Images/yanurunler.jpg",
     "items": [
-      { "name": "Porsiyon Patates Kızartması", "desc": "Çıtır çıtır altın sarısı patates. Ketçap ve mayonez ile servis edilir.", "price": "160₺", "image": "Menu_Resimleri/Yan_Urunler/Porsiyon_Patates.jpg" },
-      { "name": "Soğan Halkası 6'lı ", "desc": "Çıtır kaplamalı soğan halkaları, ranch sos ile birlikte.", "price": "80₺", "image": "Menu_Resimleri/Yan_Urunler/Sogan_Halkası.jpg" },
-      { "name": "Peynir Çubuğu 3'lü ", "desc": "Kızarmış mozzarella çubukları, marinara sos ile.", "price": "90₺", "image": "Menu_Resimleri/Yan_Urunler/Peynir_Cubuklari.jpg" }      
+      { "name": "Porsiyon Patates Kızartması", "desc": "Çıtır çıtır altın sarısı patates.", "price": "160₺", "image": "Menu_Resimleri/Yan_Urunler/Porsiyon_Patates.jpg" },
+      { "name": "Soğan Halkası 6'lı ", "desc": "Çıtır kaplamalı soğan halkaları.", "price": "80₺", "image": "Menu_Resimleri/Yan_Urunler/Sogan_Halkası.jpg" },
+      { "name": "Peynir Çubuğu 3'lü ", "desc": "Kızarmış mozzarella çubukları.", "price": "90₺", "image": "Menu_Resimleri/Yan_Urunler/Peynir_Cubuklari.jpg" }      
     ]
   },
   {
@@ -63,13 +63,11 @@
     "bg": "#2980b9",
     "image": "Main_Menu_Images/icecekler.jpg",
     "items": [
-      { "name": "Limonata", "desc": "El yapımı taze organik limonata.", "price": "60₺", "image": "Menu_Resimleri/Icecekler/Limonata.jpg" },
+      { "name": "Limonata", "desc": "El yapımı taze organik limonata.", "price": "70₺", "image": "Menu_Resimleri/Icecekler/Limonata.jpg" },
       { "name": "Kutu Coca Cola", "desc": "Soğuk içecek, 330ml Kutu.", "price": "80₺", "image": "Menu_Resimleri/Icecekler/Cola_Kutu.jpg" },
-      { "name": "Coca Cola 1 Litre", "desc": "Soğuk içecek, 1 Litre .", "price": "120₺", "image": "Menu_Resimleri/Icecekler/Cola_1lt.jpg" },
+      { "name": "1 Litre İçecek", "desc": "Soğuk içecek, 1 Litre .", "price": "120₺", "image": "Menu_Resimleri/Icecekler/Cola_1lt.jpg" },
       { "name": "Fanta", "desc": "Portakal aromalı gazlı içecek, 330ml.", "price": "80₺", "image": "Menu_Resimleri/Icecekler/Fanta_Kutu.jpg" },
-      { "name": "Fanta 1 Litre", "desc": "Portakal aromalı gazlı içecek, 330ml.", "price": "120₺", "image": "Menu_Resimleri/Icecekler/Fanta_1lt.jpg" },
       { "name": "Sprite", "desc": "Limon aromalı gazlı içecek, 330ml.", "price": "80₺", "image": "Menu_Resimleri/Icecekler/Sprite_Kutu.jpg" },
-      { "name": "Sprite 1 Litre ", "desc": "Limon Aromalı Gazlı İçecek.", "price": "120₺", "image": "Menu_Resimleri/Icecekler/Sprite_1lt.jpg" },
       { "name": "Arslan Ayran", "desc": "Arslan Ayran. 245ml.", "price": "80₺", "image": "Menu_Resimleri/Icecekler/Arslan_Ayran.jpg" },
       { "name": "Ayran Büyük", "desc": " Ayran 285ml.", "price": "60₺", "image": "Menu_Resimleri/Icecekler/Torku_Ayran.jpg" },
       { "name": "Su", "desc": "0.5 ml.", "price": "30₺", "image": "Menu_Resimleri/Icecekler/Su_0.5.jpg" },
@@ -77,7 +75,6 @@
       { "name": "Cappy Karışık", "desc": "330ml Kutu.", "price": "80₺", "image": "Menu_Resimleri/Icecekler/Cappy_Karisik.jpg" },
       { "name": "Cappy Şeftali", "desc": "330ml Kutu.", "price": "80₺", "image": "Menu_Resimleri/Icecekler/Cappy_Seftali.jpg" },
       { "name": "Cappy Vişne", "desc": "330ml Kutu.", "price": "80₺", "image": "Menu_Resimleri/Icecekler/Cappy_Visne.jpg" },
-      { "name": "Cola Zero 1 Litre", "desc": "1 Litre Şişe Kola.", "price": "120₺", "image": "Menu_Resimleri/Icecekler/Colat_Zero_1lt.jpg" },
       { "name": "Limonlu Soda", "desc": "Limon Aromalı Gazlı İçecek.", "price": "60₺", "image": "Menu_Resimleri/Icecekler/Limonlu_Maden.jpg" },
       { "name": "Maden Suyu", "desc": "Maden Suyu.", "price": "50₺", "image": "Menu_Resimleri/Icecekler/Maden_Suyu.jpg" },
       { "name": "Ice Tea Şeftali ( 330 Ml )", "desc": "Kutu içecek.", "price": "80₺", "image": "Menu_Resimleri/Icecekler/Lipton_Seftali.jpg" },

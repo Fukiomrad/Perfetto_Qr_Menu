@@ -190,7 +190,20 @@
       font-size: 16px; font-weight: 600; margin-bottom: 3px;
     }
     .item-card .item-info .desc {
-      font-size: 12px; color: #ddd; line-height: 1.4; margin-bottom: 6px;
+      font-size: 12px; color: #ddd; line-height: 1.4; margin-bottom: 6px; white-space: pre-line;
+      max-height: 0; overflow: hidden; opacity: 0;
+      transition: max-height .3s ease, opacity .3s ease, margin .3s ease;
+      margin-bottom: 0;
+    }
+    .item-card.expanded .item-info .desc {
+      max-height: 300px; opacity: 1; margin-bottom: 6px;
+    }
+    .item-card .item-info .expand-hint {
+      font-size: 11px; color: #F6A52D; margin-top: 2px;
+      transition: opacity .3s;
+    }
+    .item-card.expanded .item-info .expand-hint {
+      opacity: 0.5;
     }
     .item-card .item-info .price {
       color: #F6A52D; font-weight: 700; font-size: 15px;
@@ -222,7 +235,7 @@
 
   <nav class="side-nav" id="sideNav">
     <button class="close-btn" id="closeBtn">&times;</button>
-    <div class="brand"><img src="Perfettost_Logo.png" style="height:100px; width:32px; display:block; filter:brightness(0) invert(1);" alt="Perfetto'st" /></div>
+    <div class="brand"><img src="Perfettost_Logo.png" style="height:120px; width:auto; display:block; filter:brightness(0) invert(1);" alt="Perfetto'st" /></div>
     <a href="#" data-section="avantajli">Avantajlı Menüler</a>
     <a href="#" data-section="tostlar">Tostlar</a>
     <a href="#" data-section="burgerler">Burgerler</a>
@@ -287,9 +300,11 @@
           <div class="item-info">
             <div class="name">${item.name}</div>
             <div class="desc">${item.desc}</div>
+            <div class="expand-hint">Detaylar için dokun ▾</div>
             <div class="price">${item.price}</div>
           </div>
         `;
+        card.addEventListener('click', () => card.classList.toggle('expanded'));
 
         grid.appendChild(card);
       });
