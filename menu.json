@@ -91,6 +91,16 @@
       { "name": "KemalPaşa", "desc": "Tek kişilik.", "price": "80₺", "image": "Menu_Resimleri/Tatlilar/Kemalpasa.jpg" },
       { "name": "Churros", "desc": "Tek kişilik", "price": "130₺", "image": "Menu_Resimleri/Tatlilar/Churros.jpg" }    
     ]
+  },
+
+  {
+    "id": "salatalar",
+    "title": "Salatalar",
+    "bg": "#27ae60",
+    "image": "Main_Menu_Images/salata.jpg",
+    "items": [
+      { "name": "Mevsim Salatas", "desc": "Marul, Domates, Roka ve Salata.", "price": "120₺", "image": "Menu_Resimleri/Salatalar/salata.jpg" }   
+    ]
   }
 
 ]
